@@ -1,24 +1,22 @@
 
 let weather = {
-    apiKey: "80ba5688ceb50ce5e1b26c1c14ef377e",
+    // apiKey: "80ba5688ceb50ce5e1b26c1c14ef377e",
     fetchWeather: function (city) {
       fetch(
-        "https://api.openweathermap.org/data/2.5/weather?q={Philadelphia}&appid={80ba5688ceb50ce5e1b26c1c14ef377e}" +
-          city +
-          "&units=metric&appid=" +
-          this.apiKey
+        `https://api.openweathermap.org/data/2.5/weather?q=` + city + `&units=imperial&appid=80ba5688ceb50ce5e1b26c1c14ef377e` 
       )
         .then((response) => {
-          if (!response.ok) {
-            alert("No weather found.");
-            throw new Error("No weather found.");
-          }
-          return response.json();
+          // if (!response.ok) {
+          //   alert("No weather found.");
+          //   throw new Error("No weather found.");
+          // }
+           return response.json();
         })
         .then((data) => this.displayWeather(data));
     },
     displayWeather: function (data) {
       const { name } = data;
+      console.log(data)
       const { icon, description } = data.weather[0];
       const { temp, humidity } = data.main;
       const { speed } = data.wind;
@@ -26,7 +24,7 @@ let weather = {
       document.querySelector(".icon").src =
         "https://openweathermap.org/img/wn/" + icon + ".png";
       document.querySelector(".description").innerText = description;
-      document.querySelector(".temp").innerText = temp + "°C";
+      document.querySelector(".temp").innerText = temp + "°F";
       document.querySelector(".humidity").innerText =
         "Humidity: " + humidity + "%";
       document.querySelector(".wind").innerText =
@@ -52,4 +50,4 @@ let weather = {
       }
     });
   
-  weather.fetchWeather("Denver");
+  weather.fetchWeather("");
