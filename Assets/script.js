@@ -14,6 +14,7 @@ let weather = {
         })
         .then((data) => this.displayWeather(data));
     },
+  // Displays information and data about the weather
     displayWeather: function (data){
       const { name } = data;
       console.log(data)
@@ -37,11 +38,11 @@ let weather = {
       this.fetchWeather(document.querySelector(".search-bar").value);
     },
   };
-  
+  // Listens for the mouse click
   document.querySelector(".search button").addEventListener("click", function () {
     weather.search();
   });
-  
+  // Listens for the enter input
   document
     .querySelector(".search-bar")
     .addEventListener("keyup", function (event) {
