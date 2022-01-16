@@ -14,7 +14,7 @@ let weather = {
         })
         .then((data) => this.displayWeather(data));
     },
-    displayWeather: function (data) {
+    displayWeather: function (data){
       const { name } = data;
       console.log(data)
       const { icon, description } = data.weather[0];
